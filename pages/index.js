@@ -38,20 +38,20 @@ function Home({ messages }) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   async function getMessages() {
-  //     try {
-  //       const messagesReq = await API.graphql({
-  //         query: listMessages,
-  //         authMode: "AMAZON_COGNITO_USER_POOLS",
-  //       });
-  //       setStateMessages([...messagesReq.data.listMessages.items]);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  //   getMessages();
-  // }, [user]);
+  useEffect(() => {
+    async function getMessages() {
+      try {
+        const messagesReq = await API.graphql({
+          query: listMessages,
+          authMode: "AMAZON_COGNITO_USER_POOLS",
+        });
+        setStateMessages([...messagesReq.data.listMessages.items]);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getMessages();
+  }, [user]);
 
   const handleSubmit = async (event) => {
     // Prevent the page from reloading
